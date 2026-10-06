@@ -148,6 +148,15 @@ python manage.py runserver
 http://127.0.0.1:8000 에서 확인합니다. 샘플 계정은 `sql/seed.sql`에 있고 비밀번호는 모두 `test1234`입니다.
 (예: 수강생 `gaon_lee`, 멘토 `mentor_kang`)
 
+## 테스트
+
+```bash
+python manage.py test community
+```
+
+권한 판정, 익명 게시판, 첨부파일, Q&A 채택, 댓글, 쪽지, 팀원 모집, 로그인을 다루는 테스트 141개가 있습니다.
+테스트용 DB(`test_community`)를 만들었다 지우므로, `.env`의 DB 계정에 DB 생성 권한이 있어야 합니다.
+
 ## 폴더 구조
 
 ```
@@ -156,6 +165,7 @@ community/
   models.py             모델 13개
   permissions.py        작성 권한 판정
   views/                기능별 뷰 (board, post, qna, comment, message, notification, recruit, account, mypage, jobs)
+  tests/                기능별 테스트
   templates/            화면
   static/community/     CSS, JS
 sql/
@@ -168,7 +178,7 @@ docs/                   ERD
 
 발표 때 정리한 아쉬운 점을 이 저장소에서 하나씩 고쳐 나갑니다.
 
-- [ ] **자동화 테스트**: 지금까지는 화면을 직접 눌러 확인했습니다. 수정했던 버그부터 테스트로 고정합니다.
+- [x] **자동화 테스트**: 발표 전까지는 화면을 직접 눌러 확인했습니다. 수정했던 버그와 핵심 규칙을 테스트 141개로 고정했습니다.
 - [ ] **상시 접속 가능한 배포**: 노트북이 꺼지면 사이트도 멈춥니다. 클라우드로 옮깁니다.
 - [ ] **스타일 정리**: 후반에 만든 화면 9개에 `<style>` 블록이 흩어져 있습니다. `app.css` 한 곳으로 모읍니다.
 - [ ] **하드코딩 제거**: "게시판 이름을 코드에 박지 말자"는 규칙을 홈 화면에서 스스로 어겼습니다.
